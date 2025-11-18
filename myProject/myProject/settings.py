@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9fosf6)!x42c8b!@+#r=)@0pj)!v-q^02sf-%m^*7m8fk#h_*2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-webservice-l4f9.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'basic'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'basic.middleware.basicMiddleware',
+    'basic.middleware.SscMiddleware',
+    'basic.middleware.MedicalMiddleware',
+    'basic.middleware.AgeMiddleware'    
 ]
 
 ROOT_URLCONF = 'myProject.urls'

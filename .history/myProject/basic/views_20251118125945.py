@@ -46,14 +46,14 @@ def div(request):
         return HttpResponse("Error: Division by zero")
     return HttpResponse(f"Division: {result}")
 
-# Health check endpoint
-def health(request):
-    try:
-        with connection.cursor() as c:
-            c.execute("SELECT 1")
-        return JsonResponse({"status": "ok", "db": "connected"})
-    except Exception as e:
-        return JsonResponse({"status": "error", "db": str(e)})
+# # Health check endpoint
+# def health(request):
+#     try:
+#         with connection.cursor() as c:
+#             c.execute("SELECT 1")
+#         return JsonResponse({"status": "ok", "db": "connected"})
+#     except Exception as e:
+#         return JsonResponse({"status": "error", "db": str(e)})
 
 
 
@@ -141,6 +141,15 @@ def add_student(request):
     return JsonResponse({'error': "Unsupported method"}, status=405)
 
 
+# # Health check endpoint
+# def health(request):
+#     try:
+#         with connection.cursor() as c:
+#             c.execute("SELECT 1")
+#         return JsonResponse({"status": "ok", "db": "connected"})
+#     except Exception as e:
+#         return JsonResponse({"status": "error", "db": str(e)})
+
 
 # 11/11/2025 task operations
 
@@ -174,10 +183,3 @@ def get_unique_ages(request):
 def count_total_students(request):
     total = student.objects.count()
     return JsonResponse({'total_students': total})
-
-
-def job1(request):
-    return JsonResponse({"message":"You have successfully applied for job1"},status=200)
-
-def job2(request):
-    return JsonResponse({"Message":"you have successfully applied for job2"},status=200)

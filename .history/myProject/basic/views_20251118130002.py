@@ -142,6 +142,8 @@ def add_student(request):
 
 
 
+
+
 # 11/11/2025 task operations
 
 def get_all_students(request):
@@ -174,10 +176,3 @@ def get_unique_ages(request):
 def count_total_students(request):
     total = student.objects.count()
     return JsonResponse({'total_students': total})
-
-
-def job1(request):
-    return JsonResponse({"message":"You have successfully applied for job1"},status=200)
-
-def job2(request):
-    return JsonResponse({"Message":"you have successfully applied for job2"},status=200)

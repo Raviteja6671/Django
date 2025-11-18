@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from basic.models import student
 
 # Create your views here.
 
@@ -46,16 +44,9 @@ def div(request):
         return HttpResponse("Error: Division by zero")
     return HttpResponse(f"Division: {result}")
 
-# Health check endpoint
-def health(request):
-    try:
-        with connection.cursor() as c:
-            c.execute("SELECT 1")
-        return JsonResponse({"status": "ok", "db": "connected"})
-    except Exception as e:
-        return JsonResponse({"status": "error", "db": str(e)})
 
-
+from django.http import JsonResponse
+import json
 
 # POST - Create new student
 @csrf_exempt
@@ -141,43 +132,11 @@ def add_student(request):
     return JsonResponse({'error': "Unsupported method"}, status=405)
 
 
-
-# 11/11/2025 task operations
-
-def get_all_students(request):
-    students = student.objects.all()
-    data = list(students.values())
-    return JsonResponse(data, safe=False)
-
-def get_student_by_id(request, id):
+# Health check endpoint
+def health(request):
     try:
-        s = student.objects.get(id=id)
-        data = {'id': s.id, 'name': s.name, 'age': s.age, 'email': s.email}
-        return JsonResponse(data)
-    except student.DoesNotExist:
-        return JsonResponse({'error': 'Student not found'}, status=404)
-
-def filter_students_age_gte_20(request):
-    students = student.objects.filter(age__gte=20)
-    data = list(students.values())
-    return JsonResponse(data, safe=False)
-
-def filter_students_age_lte_25(request):
-    students = student.objects.filter(age__lte=25)
-    data = list(students.values())
-    return JsonResponse(data, safe=False)
-
-def get_unique_ages(request):
-    ages = student.objects.values_list('age', flat=True).distinct()
-    return JsonResponse(list(ages), safe=False)
-
-def count_total_students(request):
-    total = student.objects.count()
-    return JsonResponse({'total_students': total})
-
-
-def job1(request):
-    return JsonResponse({"message":"You have successfully applied for job1"},status=200)
-
-def job2(request):
-    return JsonResponse({"Message":"you have successfully applied for job2"},status=200)
+        with connection.cursor() as c:
+            c.execute("SELECT 1")
+        return JsonResponse({"status": "ok", "db": "connected"})
+    except Exception as e:
+        return JsonResponse({"status": "error", "db": str(e)})

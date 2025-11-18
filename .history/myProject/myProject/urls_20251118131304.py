@@ -20,7 +20,7 @@ from basic.views import sample
 from basic.views import sample1
 from basic.views import sampleInfo
 from basic.views import dynamicResponse
-from basic.views import add, sub, mul, div, health, add_student
+from basic.views import add, sub, mul, div, health, add_studen
 from basic.views import get_all_students, get_student_by_id, filter_students_age_gte_20,  filter_students_age_lte_25, get_unique_ages, count_total_students
 from basic.views import job1,job2
 

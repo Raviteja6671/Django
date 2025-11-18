@@ -179,5 +179,4 @@ def count_total_students(request):
 def job1(request):
     return JsonResponse({"message":"You have successfully applied for job1"},status=200)
 
-def job2(request):
-    return JsonResponse({"Message":"you have successfully applied for job2"},status=200)
+def

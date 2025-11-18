@@ -20,7 +20,9 @@ from basic.views import sample
 from basic.views import sample1
 from basic.views import sampleInfo
 from basic.views import dynamicResponse
-from basic.views import add, sub, mul, div
+from basic.views import add, sub, mul, div, health
+
+
 
 
 urlpatterns = [
@@ -32,5 +34,6 @@ urlpatterns = [
      path('add/', add),
     path('sub/', sub),
     path('mul/', mul),
-    path('div/', div)
+    path('div/', div),
+    path('health/',health)
 ]

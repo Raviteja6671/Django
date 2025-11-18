@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.db import connection
 
 # Create your views here.
 
@@ -43,3 +44,13 @@ def div(request):
     except ZeroDivisionError:
         return HttpResponse("Error: Division by zero")
     return HttpResponse(f"Division: {result}")
+
+
+#to test database connection
+def health(request):
+    try:
+        with connection.cursor() as c:
+            c.execute("SELECT 1")
+        return JsonResponse({"status":"ok","db":"connected"})
+    except Exception as e:
+        return JsonResponse({"status":"error","db":str(e)})

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            background-color: aqua;
+            color: red;
+            border: 3px solid yellow;
+            /* display: inline-block; */
+            margin-top: 35px;
+            padding: 30px;
+        }
+        a{
+            text-decoration: none;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            display: inline-block;
+            margin-top: 30px;
+            border-radius: 8px;
+            position: relative;
+            top: 10px;
+        }
+         ul{
+            display: flex;
+            justify-content: space-between;
+            background-color: aqua;
+            border: 3px solid orange;
+            padding: 10px; 
+            list-style: none;  
+            margin: 5;          
+
+        }
+    </style> 
+
+    <!-- createsuperuser:-
+    username = Raviteja_Kodem
+    Email = raviteja62@gmail.com
+    password = R@vitej@62 -->
+
+</head>
+<body>
+     <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">Aboutus</a></li>
+            <li><a href="{% url 'contact' %}">contact us</li>
+            <li><a href="{% url 'services' %}">services</li>
+            <li><a href="{% url 'projects' %}">projects</li>
+        </ul>
+    </nav>
+    <a href="{% url 'about' %}">AboutUs</a>
+    <h1>Welcome To Home Page</h1>
+</body>
+</html>
